@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
   def index
-    @cards = Card.all
+    @pagy, @cards = pagy(Card.all, items: 10)
   end
 end
