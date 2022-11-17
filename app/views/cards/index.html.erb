@@ -1,0 +1,39 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Cartões de Crédito</h3>
+          </div>
+
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Descrição</th>
+                  <th>Bandeira</th>
+                  <th>Limite</th>
+                  <th class="text-center">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @cards.each do |card| %>
+                <tr>
+                  <td><%= card.description %></td>
+                  <td><%= card.flag %></td>
+                  <td><%= card.limit%>/td>
+                  <td class="text-center"></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card-footer clearfix">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
