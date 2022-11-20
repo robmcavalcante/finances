@@ -15,6 +15,7 @@
       <%= render 'shared/topnavbar' %>
       <%= render 'shared/sidebar' %>
       <div class='content-wrapper'>
+      <%= render 'shared/flash_messages' %>
         <%= render 'shared/content_header' %>
         <%= yield %>
         <%= turbo_frame_tag "remote_modal", target: "_top" %>
