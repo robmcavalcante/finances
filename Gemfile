@@ -25,3 +25,4 @@ end
 gem 'sassc-rails'
 gem 'pagy'
 gem 'bootstrap', '~> 5.1', '>= 5.1.3'
+gem 'simple_form'
