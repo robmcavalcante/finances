@@ -4,7 +4,8 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Cartões de Crédito</h3>
+            <h3 class="card-title mt-2">Cartões de Crédito</h3>
+            <%= link_to  '<i class="fa fa-plus"></i> Adicionar'.html_safe, new_card_path, class: 'btn btn-primary float-right', data: { turbo_frame: 'remote_modal' }%>
           </div>
 
           <div class="card-body">
