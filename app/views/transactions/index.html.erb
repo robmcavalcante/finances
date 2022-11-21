@@ -30,6 +30,7 @@
                   <td><%= transaction.value  %></td>
                   <td class="text-center">
                     <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_transaction_path(transaction), data: { turbo_frame: 'remote_modal' } %>
+                    <%= button_to '<i class="fas fa-trash"></i>'.html_safe, transaction, method: :delete, data: { turbo_confirm: 'Você tem certeza?' } %>
                   </td>
                 </tr>
                 <% end %>

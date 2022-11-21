@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-  before_action :set_user, only: %i[ edit update ]
+  before_action :set_user, only: %i[ edit update destroy ]
 
   def index
     @pagy, @transactions = pagy(Transaction.all, items: 10)
@@ -27,6 +27,14 @@ class TransactionsController < ApplicationController
       redirect_to transactions_path, notice: 'Transação atualizado com sucesso!'
     else
       redirect_to transactions_path, alert: 'Erro ao atualizar os dados da transação. Tente novamente!'
+    end
+  end
+
+  def destroy
+    if @transaction.destroy
+      redirect_to transactions_path, notice: 'Transação excluída com sucesso!'
+    else
+      redirect_to transactions_path, alert: 'Erro ao tentar remover a transação. Tente novamente!'
     end
   end
 
