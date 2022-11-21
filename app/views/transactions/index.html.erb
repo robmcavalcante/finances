@@ -28,7 +28,9 @@
                   <td><%= transaction.date  %></td>
                   <td><%= transaction.category.name  %></td>
                   <td><%= transaction.value  %></td>
-                  <td class="text-center"></td>
+                  <td class="text-center">
+                    <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_transaction_path(transaction), data: { turbo_frame: 'remote_modal' } %>
+                  </td>
                 </tr>
                 <% end %>
               </tbody>
