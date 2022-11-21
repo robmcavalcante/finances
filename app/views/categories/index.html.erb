@@ -24,7 +24,9 @@
                   <td><%= category.name %></td>
                   <td><i class="<%= category.icon %>"></i></td>
                   <td><i class="fas fa-circle" style="color: <%= category.color %>"></i></td>
-                  <td class="text-center"></td>
+                  <td class="text-center">
+                    <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_category_path(category), data: { turbo_frame: 'remote_modal' } %>
+                  </td>
                 </tr>
                 <% end %>
               </tbody>

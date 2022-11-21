@@ -19,7 +19,22 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @category.update(category_params)
+      redirect_to categories_path, notice: 'Categoria atualizada com sucesso!'
+    else
+      redirect_to categories_path, alert: 'Erro ao atualizar os dados da categoria. Tente novamente!'
+    end
+  end
+
   private
+
+  def set_user
+    @category = Category.find(params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:name, :icon, :color)
