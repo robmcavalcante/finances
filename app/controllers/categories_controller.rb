@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_user, only: %i[ edit update ]
+  before_action :set_user, only: %i[ edit update destroy ]
 
   def index
     @pagy, @categories = pagy(Category.all, items: 10)
@@ -27,6 +27,14 @@ class CategoriesController < ApplicationController
       redirect_to categories_path, notice: 'Categoria atualizada com sucesso!'
     else
       redirect_to categories_path, alert: 'Erro ao atualizar os dados da categoria. Tente novamente!'
+    end
+  end
+
+  def destroy
+    if @category.destroy
+      redirect_to categories_path, notice: 'Categoria excluído com sucesso!'
+    else
+      redirect_to categories_path, alert: 'Erro ao tentar remover a categoria. Tente novamente!'
     end
   end
 

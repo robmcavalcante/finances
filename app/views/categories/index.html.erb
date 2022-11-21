@@ -26,6 +26,7 @@
                   <td><i class="fas fa-circle" style="color: <%= category.color %>"></i></td>
                   <td class="text-center">
                     <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_category_path(category), data: { turbo_frame: 'remote_modal' } %>
+                    <%= button_to '<i class="fas fa-trash"></i>'.html_safe, category, method: :delete, data: { turbo_confirm: 'Você tem certeza?' } %>
                   </td>
                 </tr>
                 <% end %>
