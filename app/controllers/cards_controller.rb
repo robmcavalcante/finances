@@ -1,4 +1,6 @@
 class CardsController < ApplicationController
+  before_action :set_user, only: %i[ edit update ]
+
   def index
     @pagy, @cards = pagy(Card.all, items: 10)
   end
@@ -17,7 +19,22 @@ class CardsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @card.update(card_params)
+      redirect_to cards_path, notice: 'Cartão atualizado com sucesso!'
+    else
+      redirect_to cards_path, alert: 'Erro ao tentar atualizar os dados do cartão. Tente novamente!'
+    end
+  end
+
   private
+
+  def set_user
+    @card = Card.find(params[:id])
+  end
 
   def card_params
     params.require(:card).permit(:description, :flag, :limit, :closure, :expiration)

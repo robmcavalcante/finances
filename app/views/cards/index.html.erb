@@ -24,7 +24,9 @@
                   <td><%= card.description %></td>
                   <td><%= card.flag %></td>
                   <td><%= card.limit%></td>
-                  <td class="text-center"></td>
+                  <td class="text-center">
+                    <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_card_path(card), data: { turbo_frame: 'remote_modal' } %>
+                  </td>
                 </tr>
                 <% end %>
               </tbody>
