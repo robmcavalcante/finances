@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_user, only: %i[ edit update ]
+  before_action :set_user, only: %i[ edit update destroy ]
 
   def index
     @pagy, @cards = pagy(Card.all, items: 10)
@@ -27,6 +27,14 @@ class CardsController < ApplicationController
       redirect_to cards_path, notice: 'Cartão atualizado com sucesso!'
     else
       redirect_to cards_path, alert: 'Erro ao tentar atualizar os dados do cartão. Tente novamente!'
+    end
+  end
+
+  def destroy
+    if @card.destroy
+      redirect_to cards_path, notice: 'Cartão excluído com sucesso!'
+    else
+      redirect_to cards_path, alert: 'Erro ao tentar remover o cartão. Tente novamente!'
     end
   end
 

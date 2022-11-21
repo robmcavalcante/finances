@@ -34,3 +34,14 @@ a {
 .alert {
   margin-bottom: 0;
 }
+
+td > form {
+  display: inline-block;
+}
+
+td > form > button {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+}
