@@ -21,12 +21,12 @@
               <tbody>
                 <% @categories.each do |category| %>
                 <tr>
-                  <td><%= category.name %></td>
-                  <td><i class="<%= category.icon %>"></i></td>
-                  <td><i class="fas fa-circle" style="color: <%= category.color %>"></i></td>
+                  <td class="align-middle"><%= category.name %></td>
+                  <td class="align-middle"><i class="<%= category.icon %>"></i></td>
+                  <td class="align-middle"><i class="fas fa-circle" style="color: <%= category.color %>"></i></td>
                   <td class="text-center">
-                    <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_category_path(category), data: { turbo_frame: 'remote_modal' } %>
-                    <%= button_to '<i class="fas fa-trash"></i>'.html_safe, category, method: :delete, data: { turbo_confirm: 'Você tem certeza?' } %>
+                    <%= button_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_category_path(category), method: :get, class: 'rounded-circle bg-light hover-overlay', data: { turbo_frame: 'remote_modal' } %>
+                    <%= button_to '<i class="fas fa-trash-alt"></i>'.html_safe, category, method: :delete, class: 'rounded-circle bg-light hover-overlay', data: { turbo_confirm: 'Você tem certeza?' } %>
                   </td>
                 </tr>
                 <% end %>

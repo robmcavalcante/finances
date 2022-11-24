@@ -23,14 +23,14 @@
               <tbody>
                 <% @transactions.each do |transaction| %>
                 <tr>
-                  <td><%= transaction.situation %></td>
-                  <td><%= transaction.description %></td>
-                  <td><%= transaction.date  %></td>
-                  <td><%= transaction.category.name  %></td>
-                  <td><%= transaction.value  %></td>
+                  <td class="align-middle"><%= transaction.situation %></td>
+                  <td class="align-middle"><%= transaction.description %></td>
+                  <td class="align-middle"><%= transaction.date %></td>
+                  <td class="align-middle"><%= transaction.category.name %></td>
+                  <td class="align-middle"><%= transaction.value %></td>
                   <td class="text-center">
-                    <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_transaction_path(transaction), data: { turbo_frame: 'remote_modal' } %>
-                    <%= button_to '<i class="fas fa-trash"></i>'.html_safe, transaction, method: :delete, data: { turbo_confirm: 'Você tem certeza?' } %>
+                    <%= button_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_transaction_path(transaction), method: :get, class: 'rounded-circle bg-light hover-overlay', data: { turbo_frame: 'remote_modal' } %>
+                    <%= button_to '<i class="fas fa-trash-alt"></i>'.html_safe, transaction, method: :delete, class: 'rounded-circle bg-light hover-overlay', data: { turbo_confirm: 'Você tem certeza?' } %>
                   </td>
                 </tr>
                 <% end %>
