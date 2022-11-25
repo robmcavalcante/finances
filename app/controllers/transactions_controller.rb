@@ -10,7 +10,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = Transaction.new(transaction_params)
+    @transaction = TransactionService.validation(transaction_params)
 
     if @transaction.save
       redirect_to transactions_path, notice: 'Transação adicionado com sucesso!'
@@ -45,7 +45,7 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:description, :date, :value, :category_id, :invoice_id, :card_id )
+    params.require(:transaction).permit(:description, :date, :value, :invoice, :category_id, :invoice_id, :card_id )
   end
 
 end
