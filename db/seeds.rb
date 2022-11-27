@@ -1,7 +1,14 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
+
+# cards
+flags = ["Mastercard", "Visa", "American Express", "Hipercard"]
+
+6.times do
+  Card.create!(
+    description: Faker::Bank.name[0..19], 
+    flag: flags.sample, 
+    limit: Faker::Number.between(from: 200, to: 10000), 
+    closure: "25",
+    expiration: "05"
+  )
+end
