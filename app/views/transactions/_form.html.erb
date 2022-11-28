@@ -4,13 +4,13 @@
       <div class="col-md-8">
         <div class="form-group">
           <%= f.label :description, "Descrição" %>
-          <%= f.input :description, label: false, input_html: { class: 'form-control' } %>
+          <%= f.input :description, label: false, input_html: { class: 'form-control', placeholder: 'Apple' } %>
         </div>    
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <%= f.label :date, "Data" %>
-          <%= f.input :date, label: false, input_html: { class: 'form-control' } %>
+          <%= f.input :date, label: false, input_html: { class: 'form-control', placeholder: "#{current_date}" } %>
         </div>
       </div>
     </div>
@@ -66,6 +66,7 @@
       element.setAttribute("type", "text");
       element.setAttribute("name", "transaction[invoice]");
       element.setAttribute("class", "form-control invoice");
+      element.setAttribute("placeholder", "MM/YYYY");
 
       target.parentNode.insertBefore(element, target);
 

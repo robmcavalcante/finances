@@ -4,4 +4,8 @@ module ApplicationHelper
   def integer_to_real_currency(value)
     "R$ " + value.to_s
   end
+
+  def current_date
+    Date.today.strftime("%d/%m/%Y")
+  end
 end
