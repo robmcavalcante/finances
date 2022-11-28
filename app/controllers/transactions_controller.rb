@@ -7,12 +7,11 @@ class TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
+    @transaction.items.build
   end
 
   def create
-    @transaction = TransactionService.validation(transaction_params)
-
-    if @transaction.save
+    if TransactionService.validation(transaction_params)
       redirect_to transactions_path, notice: 'Transação adicionado com sucesso!'
     else
       redirect_to transactions_path, alert: 'Erro ao tentar salvar a transação. Tente novamente!'
@@ -45,7 +44,9 @@ class TransactionsController < ApplicationController
   end
 
   def transaction_params
-    params.require(:transaction).permit(:description, :date, :value, :invoice, :category_id, :invoice_id, :card_id )
+    params.require(:transaction).permit(:description, :date, :value, :invoice, :category_id, :invoice_id, :card_id, 
+      items_attributes: [ :id, :description, :value ]
+    )
   end
 
 end
