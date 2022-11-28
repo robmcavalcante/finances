@@ -4,19 +4,19 @@
       <div class="col-md-4">
         <div class="form-group">
           <%= f.label :description, "Descrição" %>
-          <%= f.input :description, label: false, input_html: { class: 'form-control' } %>
+          <%= f.input :description, label: false, input_html: { class: 'form-control', placeholder: 'Banco do Brasil' } %>
         </div>    
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <%= f.label :flag, "Bandeira" %>
-          <%= f.input :flag, label: false, input_html: { class: 'form-control' } %>
+          <%= f.input :flag, label: false, input_html: { class: 'form-control', placeholder: 'Visa' } %>
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <%= f.label :limit, "Limite" %>
-          <%= f.input :limit, label: false, input_html: { class: 'form-control day-month' } %>
+          <%= f.input :limit, label: false, input_html: { class: 'form-control day-month', placeholder: 'R$ 1.540' } %>
         </div>
       </div>
     </div>
@@ -24,13 +24,13 @@
       <div class="col-md-6">
         <div class="form-group">
           <%= f.label :closure, "Dia de Fechamento" %>
-          <%= f.input :closure, label: false, input_html: { class: 'form-control day-month' } %>
+          <%= f.input :closure, label: false, input_html: { class: 'form-control day-month', placeholder: '25' } %>
         </div>
       </div>
       <div class="col-md-6">
         <div class="form-group">
           <%= f.label :expiration, "Dia do Vencimento" %>
-          <%= f.input :expiration, label: false, input_html: { class: 'form-control' } %>
+          <%= f.input :expiration, label: false, input_html: { class: 'form-control', placeholder: '05' } %>
         </div>
       </div>
     </div>
