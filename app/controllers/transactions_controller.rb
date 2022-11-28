@@ -1,8 +1,12 @@
 class TransactionsController < ApplicationController
-  before_action :set_user, only: %i[ edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy ]
 
   def index
     @pagy, @transactions = pagy(Transaction.all, items: 10)
+  end
+
+  def show
+    @items = Item.where(transaction_id: params[:id])
   end
 
   def new
