@@ -1,4 +1,6 @@
 class Card < ApplicationRecord
+  has_many :transactions, dependent: :destroy
+
   validates :description, presence: true, length: { maximum: 30 }
   validates :flag, presence: true, length: { maximum: 20 }
   validates :limit, presence: true
