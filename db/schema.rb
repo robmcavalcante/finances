@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_28_215704) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_013808) do
   create_table "cards", force: :cascade do |t|
     t.string "description", limit: 30
     t.string "flag", limit: 20
@@ -50,6 +50,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_215704) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["transaction_id"], name: "index_items_on_transaction_id"
+  end
+
+  create_table "revenues", force: :cascade do |t|
+    t.string "description", limit: 20
+    t.float "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transactions", force: :cascade do |t|
