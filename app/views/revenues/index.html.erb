@@ -24,6 +24,7 @@
                   <td class="align-middle"><%= integer_to_real_currency(revenue.value) %></td>
                   <td class="text-center">
                     <%= button_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_revenue_path(revenue), method: :get, class: 'rounded-circle bg-light hover-overlay', data: { turbo_frame: 'remote_modal' } %>
+                    <%= button_to '<i class="fas fa-trash-alt"></i>'.html_safe, revenue, method: :delete, class: 'rounded-circle bg-light hover-overlay', data: { turbo_confirm: 'Você tem certeza?' } %>
                   </td>
                 </tr>
                 <% end %>

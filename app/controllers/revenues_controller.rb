@@ -1,5 +1,5 @@
 class RevenuesController < ApplicationController
-  before_action :set_revenue, only: %i[ edit update ]
+  before_action :set_revenue, only: %i[ edit update destroy ]
 
   def index
     @pagy, @revenues = pagy(Revenue.all, items: 6)
@@ -27,6 +27,14 @@ class RevenuesController < ApplicationController
       redirect_to revenues_path, notice: 'Receita atualizado com sucesso!'
     else
       redirect_to revenues_path, alert: 'Erro ao tentar atualizar os dados do receita. Tente novamente!'
+    end
+  end
+
+  def destroy
+    if @revenue.destroy
+      redirect_to revenues_path, notice: 'Receita excluída com sucesso!'
+    else
+      redirect_to revenues_path, alert: 'Erro ao remover a receita. Tente novamente!'
     end
   end
 
