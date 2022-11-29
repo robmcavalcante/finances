@@ -14,4 +14,12 @@ module ApplicationHelper
       "active"
     end
   end
+
+  def string_to_date(value)
+    day = value[0..1]
+    month = value[2..3]
+    year = value[4..8]
+
+    "#{day}/#{month}/#{year}"
+  end
 end

@@ -25,9 +25,9 @@
                 <tr>
                   <td class="align-middle"><%= transaction.situation %></td>
                   <td class="align-middle"><%= transaction.description %></td>
-                  <td class="align-middle"><%= transaction.date %></td>
+                  <td class="align-middle"><%= string_to_date(transaction.date) %></td>
                   <td class="align-middle"><%= transaction.category.name %></td>
-                  <td class="align-middle"><%= transaction.value %></td>
+                  <td class="align-middle"><%= concatenate_brazilian_real_sign(transaction.value) %></td>
                   <td class="text-center">
                     <%= button_to '<i class="fas fa-eye"></i>'.html_safe, transaction_path(transaction), method: :get, class: 'rounded-circle bg-light hover-overlay', data: { turbo_frame: 'remote_modal' } %>
                     <%= button_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_transaction_path(transaction), method: :get, class: 'rounded-circle bg-light hover-overlay', data: { turbo_frame: 'remote_modal' } %>
