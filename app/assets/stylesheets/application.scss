@@ -3,6 +3,10 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback");
 @import "bootstrap";
 
+.nav-link.active {
+  background-color: #3f6791 !important;
+}
+
 .pagy-bootstrap-nav > ul {
   margin-block-end: 0 !important;
 }
