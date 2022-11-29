@@ -6,7 +6,7 @@
         <dt>Categoria</dt>
         <dd><%= @transaction.category.name %></dd>
         <dt>Total</dt>
-        <dd><%= integer_to_real_currency(@transaction.value) %></dd>
+        <dd><%= concatenate_brazilian_real_sign(@transaction.value) %></dd>
       </dl>
   </div>
 
