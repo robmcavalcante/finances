@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "dashboard#index"
+  root to: redirect('/dashboard')
 
   get '/dashboard', to: 'dashboard#index', as: 'dashboard'
 
