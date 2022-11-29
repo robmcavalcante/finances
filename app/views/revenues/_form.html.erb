@@ -1,0 +1,19 @@
+<%= simple_form_for revenue do |f| %>
+  <div data-turbo="false">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group">
+          <%= f.label :description, "Descrição" %>
+          <%= f.input :description, label: false, input_html: { class: 'form-control', placeholder: 'SEFIN' } %>
+        </div>    
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :value, "Bandeira" %>
+          <%= f.input :value, label: false, input_html: { class: 'form-control', placeholder: 'R$ 2.374,22' } %>
+        </div>
+      </div>
+    </div>
+    <%= f.submit "Salvar", class: 'btn btn-success' %>
+  </div>
+<% end %>
