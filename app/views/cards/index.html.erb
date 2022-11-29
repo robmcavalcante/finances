@@ -23,7 +23,7 @@
                 <tr>
                   <td class="align-middle"><%= card.description %></td>
                   <td class="align-middle"><%= card.flag %></td>
-                  <td class="align-middle"><%= integer_to_real_currency(card.limit) %></td>
+                  <td class="align-middle"><%= concatenate_brazilian_real_sign(card.limit) %></td>
                   <td class="text-center">
                     <%= button_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_card_path(card), method: :get, class: 'rounded-circle bg-light hover-overlay', data: { turbo_frame: 'remote_modal' } %>
                     <%= button_to '<i class="fas fa-trash-alt"></i>'.html_safe, card, method: :delete, class: 'rounded-circle bg-light hover-overlay', data: { turbo_confirm: 'Você tem certeza?' } %>

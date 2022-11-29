@@ -1,7 +1,7 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  def integer_to_real_currency(value)
+  def concatenate_brazilian_real_sign(value)
     "R$ " + value.to_s
   end
 
