@@ -1,6 +1,6 @@
 module DashboardHelper
   def balance
-    revenue - expenses
+    (revenue - expenses).round(2)
   end
   
   def revenue
@@ -9,7 +9,7 @@ module DashboardHelper
     total = 0
     revenues.map {|revenue| total = total + revenue.value}
 
-    total
+    total.round(2)
   end
   
   def expenses
@@ -20,7 +20,7 @@ module DashboardHelper
     total = 0
     transactions.map {|transaction| total = total + transaction.value}
 
-    total
+    total.round(2)
   end
   
   def available_credit_limit
@@ -28,7 +28,7 @@ module DashboardHelper
 
     total = 0 
     cards.map {|card| total = total + card.limit}
-
-    total - expenses
+    
+    (total - expenses).round(2)
   end
 end
