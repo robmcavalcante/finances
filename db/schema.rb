@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_221357) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_223035) do
   create_table "cards", force: :cascade do |t|
     t.string "description", limit: 30
     t.string "flag", limit: 20
@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_221357) do
     t.string "month", limit: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", limit: 1
   end
 
   create_table "icons", force: :cascade do |t|
