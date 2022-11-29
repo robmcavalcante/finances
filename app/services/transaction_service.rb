@@ -3,6 +3,8 @@ class TransactionService
     items = transaction[:items_attributes]
     transaction.delete(:items_attributes)
 
+    transaction[:value] = value_transaction(items)
+
     if transaction[:invoice].nil?
       t = Transaction.new(transaction)
 
@@ -49,5 +51,17 @@ class TransactionService
     invoice.save
 
     invoice.id
+  end
+
+  def self.value_transaction(items)
+    n_items = count_items(items)
+
+    total = 0
+
+    n_items.times do |index|
+      total = total + items["#{index}"][:value].to_f
+    end
+
+    total
   end
 end
