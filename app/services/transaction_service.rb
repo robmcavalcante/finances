@@ -22,12 +22,18 @@ class TransactionService
 
   private
 
-  def self.create_items(items, transaction_id)
+  def self.count_items(items)
     n_items = 0
 
     items.each do |i|
       n_items = n_items + 1;
     end
+
+    n_items
+  end
+
+  def self.create_items(items, transaction_id)
+    n_items = count_items(items)
 
     n_items.times do |index|
       item = Item.new(description: items["#{index}"][:description], value: items["#{index}"][:value], transaction_id: transaction_id)
