@@ -23,7 +23,13 @@
               <p>Dashboard</p>
             <% end %>
           </li>
-
+          <li class="nav-item">
+            <%= link_to expenses_path, class: "nav-link #{active_link('expenses')}" do %>
+              <i class="nav-icon fas fa-balance-scale-right"></i>
+              <p>Despesas</p>
+            <% end %>
+          </li>
+          
           <li class="nav-header mt-4">CARTÕES DE CRÉDITO</li>
 
           <li class="nav-item">

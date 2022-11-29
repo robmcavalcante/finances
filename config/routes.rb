@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :cards
   resources :revenues
+  resources :expenses
   resources :categories
   resources :transactions
 end
