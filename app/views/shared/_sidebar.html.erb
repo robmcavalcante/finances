@@ -32,6 +32,13 @@
 
           <li class="nav-header mt-4">OUTRAS OPÇÕES</li>
 
+          <li class="nav-item">
+            <%= link_to revenues_path, class: "nav-link #{active_link('revenues')}" do %>
+              <i class="nav-icon fas fa-chart-line"></i>
+              <p>Receitas</p>
+            <% end %>
+           </li>
+
            <li class="nav-item">
             <%= link_to categories_path, class: "nav-link #{active_link('categories')}" do %>
               <i class="nav-icon fas fa-tag"></i>
