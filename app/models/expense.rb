@@ -1,3 +1,3 @@
 class Expense < ApplicationRecord
-  has_many :invoices
+  has_one :invoice
 end

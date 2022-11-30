@@ -7,12 +7,26 @@ class TransactionService
 
     if transaction[:invoice].nil?
       t = Transaction.new(transaction)
-
       t.save
+
+      value_transaction = transaction[:value]
+
+      invoice = Invoice.find(transaction[:invoice_id].to_i)
+
+      invoice_value = invoice[:value]
+
+      total = invoice_value + value_transaction
+
+      invoice.update(value: total)
+
       create_items(items, t.id)
     else
-      id = create_invoice(transaction)
-      transaction[:item_id] = id
+      id = create_invoice(transaction, items)
+      transaction[:invoice_id] = id
+
+      p "$$$$$$$$$$"
+      p transaction
+      p "$$$$$$$$$$$$"
 
       t = Transaction.new(transaction)
       t.save
@@ -43,12 +57,30 @@ class TransactionService
     end
   end
 
-  def self.create_invoice(transaction)
+  def self.create_expense(transaction, items)
+    date = transaction[:invoice]
+    card = Card.find(transaction[:card_id])
+
+    expense = Expense.new(description: "#{card.description} - Fatura #{date}", value: transaction[:value], date: date)
+    expense.save
+    expense.id
+  end
+
+  def self.create_invoice(transaction, items)
     month = transaction[:invoice][0..1]
     year = transaction[:invoice][3..6]
+    
+    expense_id = create_expense(transaction, items)
+    
+    transaction.delete(:invoice)
 
-    invoice = Invoice.new(month: month, year: year)
+
+    invoice = Invoice.new(month: month, year: year, value: transaction[:value], expense_id: expense_id)
     invoice.save
+
+    p "########"
+    p invoice.id
+    p "########"
 
     invoice.id
   end

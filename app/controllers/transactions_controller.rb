@@ -34,8 +34,11 @@ class TransactionsController < ApplicationController
   end
 
   def destroy
+    transaction = @transaction
+
     if @transaction.destroy
       redirect_to transactions_path, notice: 'Transação excluída com sucesso!'
+      InvoiceService.update_value(transaction)
     else
       redirect_to transactions_path, alert: 'Erro ao tentar remover a transação. Tente novamente!'
     end
