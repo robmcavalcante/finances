@@ -65,3 +65,4 @@ group :development do
 end
 
 gem 'sassc-rails'
+gem 'pagy'
