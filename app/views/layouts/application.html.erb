@@ -18,6 +18,7 @@
         <%= render 'shared/flash_messages' %>
         <%= render 'shared/content_header' %>
         <%= yield %>
+        <%= turbo_frame_tag "remote_modal", target: "_top" %>
       </div>
     </div>
 
