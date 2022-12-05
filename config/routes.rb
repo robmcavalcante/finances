@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index', as: 'dashboard'
 
   resources :cards
+  resources :categories
 end

@@ -1,0 +1,32 @@
+<%= form_with(model: category) do |f| %>
+  <div data-turbo="false">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :description, "Name" %>
+          <%= f.text_field :description, class: 'form-control' %>
+        </div>    
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.label :icon, "Ícone", class: 'd-block' %>
+      </div>
+      <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        <% Icon.all.each_with_index do |icon, index| %>
+            <%= f.text_field :icon, type: "radio", value: "#{icon.value}", class: 'btn-check', id: "btnradio#{index}", name: 'category[icon]' %>
+            <label class="btn btn-outline-primary rounded-circle mr-1" for="btnradio<%= index %>"><i class="<%= icon.value %>"></i></label>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :color, "Cor" %>
+          <%= f.text_field :color,  class: 'form-control day-month' %>
+        </div>
+      </div>
+    </div>
+    <%= f.submit "Salvar", class: 'btn btn-success' %>
+  </div>
+<% end %>
