@@ -1,0 +1,47 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title mt-2">Despesas</h3>
+            <%= link_to  '<i class="fa fa-plus"></i> Adicionar'.html_safe, new_expense_path, class: 'btn btn-primary float-right', data: { turbo_frame: 'remote_modal' }%>
+          </div>
+
+          <div class="card-body">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Situação</th>
+                  <th>Descrição</th>
+                  <th>Valor</th>
+                  <th class="text-center">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @expenses.each do |expense| %>
+                <tr>
+                  <td class="align-middle"><%= expense.status %></td>
+                  <td class="align-middle"><%= expense.description %></td>
+                  <td class="align-middle"><%= expense.value %></td>
+                  <td class="text-center">
+                    <%= button_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_expense_path(expense), method: :get, class: 'rounded-circle bg-light hover-overlay', data: { turbo_frame: 'remote_modal' } %>
+                    <%= button_to '<i class="fas fa-trash-alt"></i>'.html_safe, expense, method: :delete, class: 'rounded-circle bg-light hover-overlay', data: { turbo_confirm: 'Você tem certeza?' } %>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card-footer clearfix">
+            <div class="row justify-content-between align-items-center">
+              <%== pagy_info @pagy %>
+              <%== pagy_bootstrap_nav(@pagy) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
