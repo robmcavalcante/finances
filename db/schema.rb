@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_04_235636) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_08_013349) do
   create_table "cards", force: :cascade do |t|
     t.string "description", limit: 30
     t.string "flag", limit: 20
@@ -63,6 +63,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_04_235636) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "transaction_items", force: :cascade do |t|
+    t.string "description", limit: 50
+    t.float "value"
+    t.integer "transaction_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["transaction_id"], name: "index_transaction_items_on_transaction_id"
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.string "description", limit: 50
     t.string "date", limit: 8
@@ -77,6 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_04_235636) do
 
   add_foreign_key "invoices", "cards"
   add_foreign_key "invoices", "expenses"
+  add_foreign_key "transaction_items", "transactions"
   add_foreign_key "transactions", "categories"
   add_foreign_key "transactions", "invoices"
 end
