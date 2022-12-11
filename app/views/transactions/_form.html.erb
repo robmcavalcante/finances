@@ -1,0 +1,111 @@
+<%= form_with(model: transaction) do |f| %>
+  <div data-turbo="false">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group">
+          <%= f.label :description, "Descrição" %>
+          <%= f.text_field :description, class: 'form-control', placeholder: 'Apple' %>
+        </div>    
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :date, "Data" %>
+          <%= f.text_field :date, class: 'form-control', placeholder: '05/12/2022' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :card, "Cartão de Crédito" %>
+          <%= f.collection_select :card_id, Card.all, :id, :description, { include_blank: 'Selecione' }, { class: 'form-select' }%>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :invoice_id, "Fatura" %>
+          <%= f.collection_select :invoice_id, Invoice.all, :id, :reference, { include_blank: 'Selecione' }, { class: 'form-select' } %>
+          <p class="text-primary white-text mt-1" id="invoice-input-action"><i class="fas fa-plus"></i> Adicionar</p>          
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <%= f.label :category, "Categoria" %>
+          <%= f.collection_select :category_id, Category.all, :id, :description, { include_blank: 'Selecione' }, { class: 'form-select' } %>
+        </div>
+      </div>
+    </div>
+    <h3>Items</h3>
+    <%= f.fields_for :transaction_items do |ff| %>
+      <div id="transaction-items">
+        <%= render 'item_attributes', f: ff %>
+      </div>
+    <% end %>
+    <div class="btn btn-primary" id="add-item"><i class="fas fa-plus"></i> Adicionar</div>
+    <div class="btn btn-danger" id="remove-item"><i class="fas fa-times"></i> Remover</div>
+      
+    <div class="float-right">
+      <%= link_to "Voltar", transactions_path, class: 'btn btn-secondary' %>
+      <%= f.submit "Salvar", class: 'btn btn-success' %>
+    </div>
+  </div>
+<% end %>
+
+<%# # TODO: relocate as javascript assets %>
+<script>
+  btn_add_invoice_input = document.querySelector("#invoice-input-action");
+
+  btn_add_invoice_input.addEventListener("click", 
+    function InsertInvoiveInput(){
+      a = document.querySelector("#transaction_invoice_id");
+      a.outerHTML =  "";
+
+      target = document.querySelector("#invoice-input-action");
+
+      element = document.createElement("input");
+      element.setAttribute("type", "text");
+      element.setAttribute("name", "transaction[invoice]");
+      element.setAttribute("class", "form-control invoice");
+      element.setAttribute("placeholder", "MM/YYYY");
+
+      target.parentNode.insertBefore(element, target);
+
+      target.outerHTML = "";
+    }
+  );
+
+  add_item = document.querySelector("#add-item");
+
+  add_item.addEventListener("click", 
+    function AddItem(){
+      let item = document.querySelector("#transaction-item");
+
+      let clone = item.cloneNode(true);
+
+      const index = document.querySelector("#transaction-items").childElementCount;
+
+      clone.querySelector("#item-description").setAttribute("name", `transaction[transaction_items_attributes][${index}][description]`);
+      clone.querySelector("#item-description").value = "";
+
+      clone.querySelector("#item-value").setAttribute("name", `transaction[transaction_items_attributes][${index}][value]`);
+      clone.querySelector("#item-value").value = "";
+
+      let items = document.querySelector("#transaction-items");
+
+      items.appendChild(clone);
+    }
+  );
+
+  remove_item = document.querySelector("#remove-item");
+
+  remove_item.addEventListener("click", 
+    function RemoveItem(){
+      items = document.querySelector("#transaction-items");
+
+      n_elements = items.childElementCount;
+
+      if (n_elements >= 2)
+        items.lastChild.remove();
+    }
+  );
+</script>

@@ -1,5 +1,5 @@
 class Invoice < ApplicationRecord
   belongs_to :card
   belongs_to :expense
-  has_many :transactions
+  has_many :transactions, dependent: :destroy
 end

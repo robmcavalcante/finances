@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_11_121135) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_11_185748) do
   create_table "cards", force: :cascade do |t|
     t.string "description", limit: 50
     t.string "flag", limit: 20
@@ -54,6 +54,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_121135) do
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_invoices_on_card_id"
     t.index ["expense_id"], name: "index_invoices_on_expense_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price", precision: 10, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "revenues", force: :cascade do |t|

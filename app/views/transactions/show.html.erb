@@ -1,0 +1,34 @@
+<%= render "shared/modals/large", title: "Transação" do %>
+  <div class="row">
+      <dl>
+        <dt>Descrição</dt>
+        <dd><%= @transaction.description %></dd>
+        <dt>Categoria</dt>
+        <dd><%= @transaction.category.description %></dd>
+        <dt>Total</dt>
+        <dd><%= @transaction.value %></dd>
+      </dl>
+  </div>
+
+  <legend>Items</legend>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="col-md-9">Descrição</th>
+            <th class="col-md-3">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+          <tr>
+            <td><%= item.description %></td>
+            <td>R$ <%= item.value %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>
