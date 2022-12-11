@@ -1,0 +1,31 @@
+/*  card footer pagination - verticaly alignment */
+.card-footer > .row > * {
+  width: auto;
+}
+
+.pagy-bootstrap-nav > ul {
+  margin-block-end: 0 !important;
+}
+
+/* flash messages - alignment */
+.flash-messages {
+  margin: 1rem 1rem 0rem;
+}
+
+.alert {
+  margin-bottom: 0;
+}
+
+/* actions buttons - stylezation */
+td > form {
+  display: inline-block;
+}
+
+td > form > button {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background-color: #FFFFFF;
+  width: 2.2rem;
+  height: 2.2rem;
+}
