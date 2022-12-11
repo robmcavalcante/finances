@@ -1,0 +1,67 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <a href="index3.html" class="brand-link">
+    <img src="//adminlte.io/themes/v3/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+    <span class="brand-text font-weight-light">Finances</span>
+  </a>
+
+  <div class="sidebar">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img src="//adminlte.io/themes/v3/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+      </div>
+      <div class="info">
+        <%= link_to 'Robson Cavalcante', root_path, class: 'd-block' %>
+      </div>
+    </div>
+
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+        <li class="nav-item">
+          <%= link_to root_path, class: "nav-link #{active_link('dashboard')}" do %>
+          <i class="nav-icon bi bi-speedometer"></i>
+          <p>Dashboard</p>
+          <% end %>
+        </li>
+
+        <li class="nav-header mt-1">BALANÇO MENSAL</li>
+
+        <li class="nav-item">
+          <%= link_to root_path, class: "nav-link #{active_link('revenues')}" do %>
+          <i class="nav-icon bi bi-graph-up-arrow w-50 h-50"></i>
+          <p>Receitas</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '', class: "nav-link #{active_link('expenses')}" do %>
+          <i class="nav-icon bi bi-graph-down-arrow"></i>
+          <p>Despesas</p>
+          <% end %>
+        </li>
+
+        <li class="nav-header mt-1">CARTÕES DE CRÉDITO</li>
+
+        <li class="nav-item">
+          <%= link_to '', class: "nav-link #{active_link('cards')}" do %>
+          <i class="nav-icon bi bi-credit-card-fill"></i>
+          <p>Cartões</p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '', class: "nav-link #{active_link('transactions')}" do %>
+          <i class="nav-icon bi bi-arrow-left-right"></i>
+          <p>Transações</p>
+          <% end %>
+        </li>
+
+        <li class="nav-header mt-1">OUTRAS OPÇÕES</li>
+
+        <li class="nav-item">
+          <%= link_to '', class: "nav-link #{active_link('categories')}" do %>
+          <i class="nav-icon bi bi-tag-fill"></i>
+          <p>Categorias</p>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>
