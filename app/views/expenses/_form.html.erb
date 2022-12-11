@@ -1,0 +1,29 @@
+<%= form_with(model: expense) do |f| %>
+  <div data-turbo="false">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :description, "Descrição" %>
+          <%= f.text_field :description, class: 'form-control' %>
+        </div>    
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :date, "Data" %>
+          <%= f.text_field :date,  class: 'form-control day-month' %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :value, "Valor" %>
+          <%= f.text_field :value,  class: 'form-control day-month' %>
+        </div>
+      </div>
+    </div>
+    <%= f.submit "Salvar", class: 'btn btn-success' %>
+  </div>
+<% end %>
