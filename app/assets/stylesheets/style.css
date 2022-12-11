@@ -29,3 +29,9 @@ td > form > button {
   width: 2.2rem;
   height: 2.2rem;
 }
+
+/* display of icons to link categories */
+.btn-group > label {
+  min-width: 2.6rem;
+  max-width: 2.6rem;
+}
