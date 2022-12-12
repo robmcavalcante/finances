@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :expenses
   resources :categories
   resources :transactions
+
+  get '/card/:id/invoices', to: 'invoices#index'
 end

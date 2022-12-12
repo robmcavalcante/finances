@@ -24,7 +24,7 @@
       <div class="col-md-4">
         <div class="form-group">
           <%= f.label :invoice_id, "Fatura" %>
-          <%= f.collection_select :invoice_id, Invoice.all, :id, :reference, { include_blank: 'Selecione' }, { class: 'form-select' } %>
+          <%= f.collection_select :invoice_id, [], [], [], { include_blank: 'Selecione' }, { class: 'form-select' } %>
           <p class="text-primary white-text mt-1" id="invoice-input-action"><i class="fas fa-plus"></i> Adicionar</p>          
         </div>
       </div>
