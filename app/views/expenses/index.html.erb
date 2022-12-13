@@ -23,7 +23,7 @@
                 <tr>
                   <td class="align-middle"><%= expense.status %></td>
                   <td class="align-middle"><%= expense.description %></td>
-                  <td class="align-middle"><%= expense.invoice.value %></td>
+                  <td class="align-middle"><%= expense_value(expense) %></td>
                   <td class="text-center">
                     <%= button_to '<i class="fas fa-pencil-alt"></i>'.html_safe, edit_expense_path(expense), method: :get, class: 'rounded-circle bg-light hover-overlay', data: { turbo_frame: 'remote_modal' } %>
                     <%= button_to '<i class="fas fa-trash-alt"></i>'.html_safe, expense, method: :delete, class: 'rounded-circle bg-light hover-overlay', data: { turbo_confirm: 'Você tem certeza?' } %>

@@ -1,7 +1,7 @@
 class ExpenseCreator
   def initialize(card, reference)
     @description = "#{card.description} - Fatura #{reference.insert(2, '/')}"
-    @date = "#{card.expiration}#{reference}" 
+    @date = "#{card.expiration}#{reference.gsub('/', '')}" 
   end
 
   def call
