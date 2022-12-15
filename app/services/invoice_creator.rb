@@ -1,6 +1,6 @@
 class InvoiceCreator
   def initialize(invoice, card)
-    @reference = invoice.gsub('/', '')
+    @reference = invoice.tr("^0-9", '')
     @card = Card.find(card)
   end
 

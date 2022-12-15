@@ -1,4 +1,4 @@
-class TransactionCreator
+class Transactions::TransactionCreator
   def initialize(params)
     @transaction = params.except(:invoice, :transaction_items_attributes, :card_id)
     @invoice = params.slice(:invoice).values[0]

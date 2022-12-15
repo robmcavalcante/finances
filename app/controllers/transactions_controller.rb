@@ -15,7 +15,7 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    @transaction = TransactionCreator.new(transaction_params).call
+    @transaction = Transactions::TransactionCreator.new(transaction_params).call
     if @transaction
       redirect_to transactions_path, notice: 'Transação cadastrada com sucesso!'
     else
@@ -27,7 +27,9 @@ class TransactionsController < ApplicationController
   end
 
   def update
-    if @transaction.update(transaction_params)
+    @transaction = Transactions::TransactionUpdate.new(transaction_params).call
+
+    if @transaction
       redirect_to transactions_path, notice: 'Transação atualizado com sucesso!'
     else
       redirect_to transactions_path, alert: 'Erro ao atualizar os dados da transação. Tente novamente!'
